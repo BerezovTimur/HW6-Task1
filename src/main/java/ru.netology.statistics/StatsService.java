@@ -15,10 +15,7 @@ public class StatsService {
     public int averageMonthSales (int[] sales){
         int averageSales = 0;
         int period = 0;
-        int sum = 0;
-        for (int sale : sales) {
-            sum += sale;
-        }
+        int sum = summarySales(sales);
         for (int sale :sales){
             period = period + 1;
         }
@@ -60,16 +57,7 @@ public class StatsService {
     public int monthUnderAverageSales (int[] sales){
         int counter = 0;
         int monthUnderMiddleSales = sales[0];
-        int averageSales = 0;
-        int period = 0;
-        int sum = 0;
-        for (int sale : sales) {
-            sum += sale;
-        }
-        for (int sale :sales){
-            period = period + 1;
-        }
-        averageSales = sum / period;
+        int averageSales = averageMonthSales(sales);
         for (int sale : sales){
             monthUnderMiddleSales = sale;
             if (averageSales > monthUnderMiddleSales){
@@ -83,16 +71,7 @@ public class StatsService {
     public int monthOverAverageSales (int[] sales){
         int counter = 0;
         int monthOverMiddleSales = sales[0];
-        int averageSales = 0;
-        int period = 0;
-        int sum = 0;
-        for (int sale : sales) {
-            sum += sale;
-        }
-        for (int sale :sales){
-            period = period + 1;
-        }
-        averageSales = sum / period;
+        int averageSales = averageMonthSales(sales);
         for (int sale : sales){
             monthOverMiddleSales = sale;
             if (averageSales < monthOverMiddleSales){
@@ -101,5 +80,4 @@ public class StatsService {
         }
         return counter;
     }
-
 }
